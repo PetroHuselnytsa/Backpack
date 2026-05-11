@@ -104,7 +104,7 @@ public class AuthController : ControllerBase
         return Ok(new { message = "Token revoked." });
     }
 
-    private (string value, RefreshToken token) CreateRefreshToken(int userId)
+    private (string value, RefreshToken token) CreateRefreshToken(Guid userId)
     {
         var tokenValue = _tokenService.GenerateRefreshToken();
         var expiryDays = int.Parse(_config["JwtSettings:RefreshTokenExpiryDays"] ?? "7");
